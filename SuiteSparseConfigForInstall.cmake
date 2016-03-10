@@ -26,6 +26,7 @@ endif()
 set(USE_SuiteSparse ${SuiteSparse_IMPORT_PREFIX}/UseSuiteSparse${SuiteSparse_LIB_POSTFIX}.cmake)
 
 if(EXISTS ${USE_SuiteSparse})
+	include(${USE_SuiteSparse})
 	set(SuiteSparse_FOUND ON)
 	set(SUITESPARSE_FOUND ON)
 else()
