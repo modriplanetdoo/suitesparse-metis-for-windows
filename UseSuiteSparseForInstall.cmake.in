@@ -33,6 +33,7 @@ set(SuiteSparse_LIB_DIR 	"${SuiteSparse_DIR}/lib@LIB_POSTFIX@")
 
 if(WIN32 AND SuiteSparse_USE_LAPACK_BLAS)
 	set(SuiteSparse_LAPACK_BLAS_LIB_DIR 		"${SuiteSparse_DIR}/@SuiteSparse_LAPACK_BLAS_LIB_DIR@")
+	set(SuiteSparse_CUSTOM_LAPACK_BLAS_LIB_DIR	"${SuiteSparse_DIR}/@SuiteSparse_LAPACK_BLAS_LIB_DIR@/custom")
 	file(GLOB SuiteSparse_LAPACK_BLAS_LIBRARIES "${SuiteSparse_LAPACK_BLAS_LIB_DIR}/*.lib")
 	file(GLOB SuiteSparse_LAPACK_BLAS_DLL 		"${SuiteSparse_LAPACK_BLAS_LIB_DIR}/*.dll")
 	
@@ -49,9 +50,10 @@ if(WIN32 AND SuiteSparse_USE_LAPACK_BLAS)
 	endif()
 else()
 	set(SuiteSparse_LAPACK_BLAS_LIB_DIR "")
+	set(SuiteSparse_CUSTOM_LAPACK_BLAS_LIB_DIR "")
 endif()
 
-set(SuiteSparse_LIB_DIRS 	"${SuiteSparse_LIB_DIR}" "${SuiteSparse_LAPACK_BLAS_LIB_DIR}")
+set(SuiteSparse_LIB_DIRS 	"${SuiteSparse_LIB_DIR}" "${SuiteSparse_LAPACK_BLAS_LIB_DIR}" "${SuiteSparse_CUSTOM_LAPACK_BLAS_LIB_DIR}")
 link_directories(${SuiteSparse_LIB_DIRS})
 
 set(SuiteSparse_CMAKE_CONFIG "${SuiteSparse_DIR}/cmake/SuiteSparse-config@LIB_POSTFIX@.cmake")
